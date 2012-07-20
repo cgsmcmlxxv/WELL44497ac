@@ -73,8 +73,9 @@ init(SEED) when is_integer(SEED) -> next({create_list(SEED),1});
 init(SEED) when is_list(SEED) -> next({SEED,1}).
 
 %% computing generated state and value as {STATE,VALUE} with
-%%    - STATE = {K: list of integers, N: next seed index}
-%%    - VALUE: computed value for the given state STATE
+%%    - STATE = {LI: list of integers, NSI: next seed index}
+%%    - VALUE: generated value for the given state
+%% accepts STATE
 next({K,N}) when  N >  ?R-?M1                   -> case_3({K,N});
 next({K,N}) when (N =< ?R-?M1) and (N > ?R-?M3) -> case_4({K,N});
 next({K,N}) when (N =< ?R-?M3) and (N > ?R-?M2) -> case_5({K,N});
